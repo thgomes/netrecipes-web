@@ -20,6 +20,7 @@ html, body, #root {
 }
 
 body {
+  background-color: #111;
   -webkit-font-smoothing: antialiased;
 }
 

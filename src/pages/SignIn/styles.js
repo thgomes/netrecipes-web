@@ -20,7 +20,7 @@ export const Container = styled.div`
     max-width: 360px;
 
     input {
-      background: rgba(0, 0, 0);
+      background: rgba(20, 20, 20, 0.6);
       border: 0;
       border-radius: 4px;
       height: 44px;

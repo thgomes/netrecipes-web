@@ -1,7 +1,8 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 import { PersistGate } from 'redux-persist/integration/react';
-import { Provider } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Router } from 'react-router-dom';
 
 import './config/ReactotronConfig';
@@ -9,13 +10,17 @@ import './config/ReactotronConfig';
 import Routes from './routes';
 import history from './services/history';
 
-import { store, persistor } from './store';
+import { persistor } from './store';
 
+import light from './styles/themes/light';
+import dark from './styles/themes/dark';
 import GlobalStyle from './styles/global';
 
 function App() {
+  const theme = useSelector((state) => state.theme.theme);
+
   return (
-    <Provider store={store}>
+    <ThemeProvider theme={theme}>
       <PersistGate persistor={persistor}>
         <Router history={history}>
           <Routes />
@@ -23,7 +28,7 @@ function App() {
           <ToastContainer autoClose={3000} />
         </Router>
       </PersistGate>
-    </Provider>
+    </ThemeProvider>
   );
 }
 

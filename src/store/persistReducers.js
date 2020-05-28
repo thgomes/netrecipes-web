@@ -6,7 +6,7 @@ export default (reducers) => {
     {
       key: 'netrecipes',
       storage,
-      whitelist: ['auth', 'user'],
+      whitelist: ['auth', 'user', 'theme'],
     },
     reducers
   );

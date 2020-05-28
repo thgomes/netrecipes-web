@@ -4,8 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -22,8 +20,10 @@ html, body, #root {
 }
 
 body {
-  background-color: #111;
+  background-color: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.text};
   -webkit-font-smoothing: antialiased;
+  transition: background-color 2s;
 }
 
 body, input, button {

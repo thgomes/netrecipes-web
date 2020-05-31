@@ -21,16 +21,16 @@ function Header() {
     <Container>
       <Content>
         <Link to="/home">NetRecipes</Link>
-        <nav>
-          <p>perfil</p>
-        </nav>
-        <button type="button" onClick={handleOnClick}>
-          {theme.title === 'dark' ? (
-            <FaMoon color="#fff" size={20} />
-          ) : (
-            <FaSun color="#242423" size={20} />
-          )}
-        </button>
+
+        <aside>
+          <button type="button" onClick={handleOnClick}>
+            {theme.title === 'dark' ? (
+              <FaMoon color="#fff" size={20} />
+            ) : (
+              <FaSun color="#242423" size={20} />
+            )}
+          </button>
+        </aside>
       </Content>
     </Container>
   );

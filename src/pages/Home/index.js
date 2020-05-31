@@ -1,74 +1,53 @@
-import React from 'react';
-import api from '../../services/api';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-import Header from '../../components/Header';
+import api from '../../services/api';
 
 import chef from '../../assets/chef.png';
 
-import { SubTitle, Content, Banner, RecipeList } from './styles';
+import { SubTitle, Banner, RecipeList, Container } from './styles';
 
 function Home() {
-  api.get('newrecipes');
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    async function loadNotifications() {
+      const response = await api.get('recipes');
+
+      setRecipes(response.data);
+    }
+
+    loadNotifications();
+  }, []);
 
   return (
-    <>
-      <Header />
-      <Content>
-        <Banner>
-          <div>
-            <h2>As melhores receitas</h2>
-            <p>
-              Mostre para o mundo suas receitas e aprenda a fazer novos pratos.
-            </p>
-          </div>
-          <img src={chef} alt="NetFood" />
-        </Banner>
-        <SubTitle>
-          <h2>Novas Receitas</h2>
-        </SubTitle>
-        <RecipeList>
+    <Container>
+      <Banner>
+        <div>
+          <h2>As melhores receitas</h2>
+          <p>
+            Mostre para o mundo suas receitas e aprenda a fazer novos pratos.
+          </p>
+        </div>
+        <img src={chef} alt="NetFood" />
+      </Banner>
+      <SubTitle>
+        <h2>Novas Receitas</h2>
+      </SubTitle>
+      <RecipeList>
+        {recipes.map((recipe) => (
           <li>
-            <img
-              src="https://www.ocladapizza.com.br/wp-content/uploads/2017/02/conhe%C3%A7a-7-sabores-de-pizza-mais-consumidos-na-italia-blog-pizzaria-o-cla-da-pizza.jpg"
-              alt="Recipe"
-            />
-            <strong>Pizza Italiana de Calabreza ao molho com queijo</strong>
+            <Link to="/recipe">
+              <img
+                src="https://gooutside-static-cdn.akamaized.net/wp-content/uploads/sites/3/2020/02/comida-porcaria-efeito-no-cerebro-1280x720.jpg"
+                alt={recipe.name}
+              />
+              <strong>{recipe.name}</strong>
+            </Link>
           </li>
-          <li>
-            <img src="" alt="Recipe" />
-            <strong>Pizza Italiana</strong>
-          </li>
-          <li>
-            <img
-              src="https://www.ocladapizza.com.br/wp-content/uploads/2017/02/conhe%C3%A7a-7-sabores-de-pizza-mais-consumidos-na-italia-blog-pizzaria-o-cla-da-pizza.jpg"
-              alt="Recipe"
-            />
-            <strong>Pizza Italiana</strong>
-          </li>
-          <li>
-            <img
-              src="https://www.ocladapizza.com.br/wp-content/uploads/2017/02/conhe%C3%A7a-7-sabores-de-pizza-mais-consumidos-na-italia-blog-pizzaria-o-cla-da-pizza.jpg"
-              alt="Recipe"
-            />
-            <strong>Pizza Italiana</strong>
-          </li>
-          <li>
-            <img
-              src="https://www.ocladapizza.com.br/wp-content/uploads/2017/02/conhe%C3%A7a-7-sabores-de-pizza-mais-consumidos-na-italia-blog-pizzaria-o-cla-da-pizza.jpg"
-              alt="Recipe"
-            />
-            <strong>Pizza Italiana</strong>
-          </li>
-          <li>
-            <img
-              src="https://www.ocladapizza.com.br/wp-content/uploads/2017/02/conhe%C3%A7a-7-sabores-de-pizza-mais-consumidos-na-italia-blog-pizzaria-o-cla-da-pizza.jpg"
-              alt="Recipe"
-            />
-            <strong>Pizza Italiana</strong>
-          </li>
-        </RecipeList>
-      </Content>
-    </>
+        ))}
+      </RecipeList>
+    </Container>
   );
 }
 

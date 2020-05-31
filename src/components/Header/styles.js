@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.header`
   height: 64px;
   background: ${(props) => props.theme.colors.background};
   display: flex;
@@ -21,9 +21,6 @@ export const Content = styled.div`
     font-size: 36px;
     font-weight: bold;
     color: ${(props) => props.theme.colors.text};
-  }
-
-  nav {
   }
 
   button {

@@ -12,8 +12,6 @@ import history from './services/history';
 
 import { persistor } from './store';
 
-import light from './styles/themes/light';
-import dark from './styles/themes/dark';
 import GlobalStyle from './styles/global';
 
 function App() {

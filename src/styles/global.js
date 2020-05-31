@@ -20,10 +20,8 @@ html, body, #root {
 }
 
 body {
-  background-color: ${(props) => props.theme.colors.background};
   color: ${(props) => props.theme.colors.text};
   -webkit-font-smoothing: antialiased;
-  transition: background-color 2s;
 }
 
 body, input, button {

@@ -8,8 +8,6 @@ import { signUpRequest } from '../../store/modules/auth/actions';
 
 import chef from '../../assets/chef.png';
 
-import { Container } from './styles';
-
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
   email: Yup.string()
@@ -28,7 +26,7 @@ function SignUp() {
   }
 
   return (
-    <Container>
+    <>
       <img src={chef} alt="NetRecipes" />
 
       <Form schema={schema} onSubmit={handleSubmit}>
@@ -39,7 +37,7 @@ function SignUp() {
         <button type="submit">Acessar</button>
         <Link to="/">Já tenho login</Link>
       </Form>
-    </Container>
+    </>
   );
 }
 

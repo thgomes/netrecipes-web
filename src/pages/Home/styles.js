@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Content = styled.div`
+export const Container = styled.div`
   max-width: 1020px;
   margin: 0 auto;
 `;
@@ -49,15 +49,18 @@ export const RecipeList = styled.ul`
     display: flex;
     flex-direction: column;
 
-    img {
-      height: 160px;
-      border-radius: 10px;
-      background: #dcb8cb;
-    }
+    a {
+      img {
+        width: 100%;
+        border-radius: 10px;
+        background: #dcb8cb;
+      }
 
-    strong {
-      margin-top: 10px;
-      font-size: 18px;
+      strong {
+        margin-top: 10px;
+        font-size: 18px;
+        color: ${(props) => props.theme.colors.text};
+      }
     }
   }
 `;

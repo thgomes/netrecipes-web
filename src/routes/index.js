@@ -6,14 +6,16 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 
 import Home from '../pages/Home';
+import Recipe from '../pages/Recipe';
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
-      <Route path="/register" exact component={SignUp} />
+      <Route path="/register" component={SignUp} />
 
-      <Route path="/home" exact component={Home} isPrivate />
+      <Route path="/home" component={Home} isPrivate />
+      <Route path="/recipe" component={Recipe} isPrivate />
     </Switch>
   );
 }

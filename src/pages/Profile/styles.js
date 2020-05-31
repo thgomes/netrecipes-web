@@ -19,7 +19,7 @@ export const User = styled.div`
 
   a {
     margin: 5px;
-    color: #777;
+    color: #888;
   }
 `;
 

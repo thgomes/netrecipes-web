@@ -9,6 +9,7 @@ export const Container = styled.div`
 
   h1 {
     margin-top: 20px;
+    color: ${(props) => props.theme.colors.strongtext};
   }
 
   img {
@@ -36,7 +37,7 @@ export const List = styled.div`
   list-style: none;
 
   li {
-    background-color: ${(props) => props.theme.colors.primary};
+    background-color: ${(props) => props.theme.colors.secundary};
     padding: 10px;
     border-radius: 10px;
 

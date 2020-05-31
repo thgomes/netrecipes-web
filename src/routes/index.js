@@ -7,6 +7,8 @@ import SignUp from '../pages/SignUp';
 
 import Home from '../pages/Home';
 import Recipe from '../pages/Recipe';
+import Profile from '../pages/Profile';
+import Account from '../pages/Account';
 
 export default function Routes() {
   return (
@@ -16,6 +18,8 @@ export default function Routes() {
 
       <Route path="/home" component={Home} isPrivate />
       <Route path="/recipe" component={Recipe} isPrivate />
+      <Route path="/profile" component={Profile} isPrivate />
+      <Route path="/account" component={Account} isPrivate />
     </Switch>
   );
 }

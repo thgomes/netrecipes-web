@@ -6,7 +6,7 @@ import { FaMoon, FaSun } from 'react-icons/fa';
 
 import { changeThemeRequest } from '../../store/modules/theme/actions';
 
-import { Container, Content } from './styles';
+import { Container, Content, Profile } from './styles';
 
 function Header() {
   const theme = useSelector((state) => state.theme.theme);
@@ -23,6 +23,17 @@ function Header() {
         <Link to="/home">NetRecipes</Link>
 
         <aside>
+          <Profile>
+            <div>
+              <strong>Thiago Gomes</strong>
+              <Link to="/profile">Meu perfil</Link>
+            </div>
+            <img
+              src="https://api.adorable.io/avatars/285/abott@adorable.png"
+              alt="Thiago Gomes"
+            />
+          </Profile>
+
           <button type="button" onClick={handleOnClick}>
             {theme.title === 'dark' ? (
               <FaMoon color="#fff" size={20} />

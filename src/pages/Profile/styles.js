@@ -5,38 +5,22 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 
-export const Banner = styled.div`
-  color: #000;
-  margin-top: 40px;
-  background-color: ${(props) => props.theme.colors.secundary};
-  border-radius: 20px;
+export const User = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-
-  div {
-    font-family: 'Cormorant Upright', sans-serif;
-    width: 400px;
-    margin-left: 60px;
-
-    h2 {
-      font-size: 45px;
-    }
-
-    p {
-      font-size: 24px;
-    }
-  }
+  margin: 60px;
 
   img {
-    width: 360px;
+    max-width: 120px;
+    border-radius: 50%;
+    margin-bottom: 10px;
   }
-`;
 
-export const SubTitle = styled.div`
-  margin-top: 60px;
-  margin-bottom: 30px;
-  color: ${(props) => props.theme.colors.strongtext};
+  a {
+    margin: 5px;
+    color: #777;
+  }
 `;
 
 export const RecipeList = styled.ul`

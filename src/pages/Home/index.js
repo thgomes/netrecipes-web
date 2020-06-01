@@ -37,9 +37,9 @@ function Home() {
       <RecipeList>
         {recipes.map((recipe) => (
           <li>
-            <Link to="/recipe">
+            <Link to={`/recipe/${recipe.id}`}>
               <img
-                src="https://gooutside-static-cdn.akamaized.net/wp-content/uploads/sites/3/2020/02/comida-porcaria-efeito-no-cerebro-1280x720.jpg"
+                src="https://i.ndtvimg.com/i/2017-10/gourmet-620_620x350_71507112783.jpg"
                 alt={recipe.name}
               />
               <strong>{recipe.name}</strong>

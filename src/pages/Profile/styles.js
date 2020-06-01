@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   max-width: 1020px;
   margin: 0 auto;
+
+  h2 {
+    color: ${(props) => props.theme.colors.strongtext};
+  }
 `;
 
 export const User = styled.div`
@@ -10,6 +14,10 @@ export const User = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 60px;
+
+  h1 {
+    color: ${(props) => props.theme.colors.strongtext};
+  }
 
   img {
     max-width: 120px;
@@ -19,7 +27,7 @@ export const User = styled.div`
 
   a {
     margin: 5px;
-    color: #888;
+    color: ${(props) => props.theme.colors.text};
   }
 `;
 

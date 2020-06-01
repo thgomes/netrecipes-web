@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import api from '../../services/api';
 
 import { Container, User, RecipeList } from './styles';
 
 function Profile() {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    async function loadNotifications() {
+      const response = await api.get('recipes');
+
+      setRecipes(response.data);
+    }
+
+    loadNotifications();
+  }, []);
   return (
     <Container>
       <User>
@@ -16,33 +29,17 @@ function Profile() {
       </User>
       <h2>Minhas Receitas</h2>
       <RecipeList>
-        <li>
-          <Link to="/recipe">
-            <img
-              src="https://gooutside-static-cdn.akamaized.net/wp-content/uploads/sites/3/2020/02/comida-porcaria-efeito-no-cerebro-1280x720.jpg"
-              alt="recipe"
-            />
-            <strong>Receita muito gostosa</strong>
-          </Link>
-        </li>
-        <li>
-          <Link to="/recipe">
-            <img
-              src="https://gooutside-static-cdn.akamaized.net/wp-content/uploads/sites/3/2020/02/comida-porcaria-efeito-no-cerebro-1280x720.jpg"
-              alt="recipe"
-            />
-            <strong>Receita muito gostosa</strong>
-          </Link>
-        </li>
-        <li>
-          <Link to="/recipe">
-            <img
-              src="https://gooutside-static-cdn.akamaized.net/wp-content/uploads/sites/3/2020/02/comida-porcaria-efeito-no-cerebro-1280x720.jpg"
-              alt="recipe"
-            />
-            <strong>Receita muito gostosa</strong>
-          </Link>
-        </li>
+        {recipes.map((recipe) => (
+          <li>
+            <Link to={`/recipe/${recipe.id}`}>
+              <img
+                src="https://gooutside-static-cdn.akamaized.net/wp-content/uploads/sites/3/2020/02/comida-porcaria-efeito-no-cerebro-1280x720.jpg"
+                alt={recipe.name}
+              />
+              <strong>{recipe.name}</strong>
+            </Link>
+          </li>
+        ))}
       </RecipeList>
     </Container>
   );

@@ -25,6 +25,7 @@ export const Container = styled.div`
   }
 
   h2 {
+    color: ${(props) => props.theme.colors.strongtext};
     margin-top: 20px;
   }
 `;
@@ -37,7 +38,7 @@ export const List = styled.div`
   list-style: none;
 
   li {
-    background-color: ${(props) => props.theme.colors.secundary};
+    border: solid 1px ${(props) => props.theme.colors.primary};
     padding: 10px;
     border-radius: 10px;
 

@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Banner = styled.div`
-  color: #000;
+  color: #000505;
   margin-top: 40px;
   background-color: ${(props) => props.theme.colors.secundary};
   border-radius: 20px;

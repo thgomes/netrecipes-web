@@ -5,7 +5,7 @@ export const Container = styled.header`
   background: ${(props) => props.theme.colors.background};
   display: flex;
   align-items: center;
-  border-bottom: solid 2px ${(props) => props.theme.colors.primary};
+  border-bottom: solid 1px ${(props) => props.theme.colors.primary};
 `;
 
 export const Content = styled.div`
@@ -45,14 +45,14 @@ export const Profile = styled.div`
 
     strong {
       display: block;
-      color: ${(props) => props.theme.strongtext};
+      color: ${(props) => props.theme.colors.strongtext};
     }
 
     a {
       display: block;
       margin-top: 2px;
       font-size: 12px;
-      color: #999;
+      color: ${(props) => props.theme.colors.text};
     }
   }
 

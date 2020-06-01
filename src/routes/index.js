@@ -17,7 +17,7 @@ export default function Routes() {
       <Route path="/register" component={SignUp} />
 
       <Route path="/home" component={Home} isPrivate />
-      <Route path="/recipe" component={Recipe} isPrivate />
+      <Route path="/recipe/:id" component={Recipe} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
       <Route path="/account" component={Account} isPrivate />
     </Switch>

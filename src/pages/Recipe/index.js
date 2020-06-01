@@ -1,64 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import api from '../../services/api';
 
 import { Container, Content, List } from './styles';
 
-function Recipe() {
+function Recipe({ match }) {
+  const [recipe, setRecipe] = useState({
+    recipe: {},
+    ingredients: [],
+    steps: [],
+  });
+
+  useEffect(() => {
+    async function loadRecipe() {
+      const { id } = match.params;
+
+      const response = await api.get(`recipes/${id}`);
+
+      setRecipe(response.data);
+    }
+
+    loadRecipe();
+  }, []);
+
   return (
     <Container>
       <Content>
-        <h1>New recipe</h1>
+        <h1>{recipe.recipe.name}</h1>
         <img
           src="https://gooutside-static-cdn.akamaized.net/wp-content/uploads/sites/3/2020/02/comida-porcaria-efeito-no-cerebro-1280x720.jpg"
           alt="Recipe"
         />
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </p>
+        <p>{recipe.recipe.description}</p>
         <h2>Ingredientes</h2>
         <List>
-          <li>
-            <strong>6 xicaras</strong>
-            <strong>açucar</strong>
-          </li>
-          <li>
-            <strong>6 xicaras</strong>
-            <strong>açucar</strong>
-          </li>
-          <li>
-            <strong>6 xicaras</strong>
-            <strong>açucar</strong>
-          </li>
-          <li>
-            <strong>6 xicaras</strong>
-            <strong>açucar</strong>
-          </li>
+          {recipe.ingredients.name ? (
+            recipe.ingredients.map((ingredient) => (
+              <li>
+                <strong>{ingredient.quantity}</strong>
+                <strong>{ingredient.name}</strong>
+              </li>
+            ))
+          ) : (
+            <li>
+              <strong>Nenhum ingrediente registrado</strong>
+            </li>
+          )}
         </List>
         <h2>Passo a passo</h2>
         <List>
-          <li>
-            <strong>1</strong>
-            <strong>colocar no fogo</strong>
-          </li>
-          <li>
-            <strong>1</strong>
-            <strong>colocar no fogo</strong>
-          </li>
-          <li>
-            <strong>1</strong>
-            <strong>colocar no fogo</strong>
-          </li>
-          <li>
-            <strong>1</strong>
-            <strong>colocar no fogo</strong>
-          </li>
+          {recipe.steps.name ? (
+            recipe.steps.map((step) => (
+              <li>
+                <strong>{step.order}</strong>
+                <strong>{step.name}</strong>
+              </li>
+            ))
+          ) : (
+            <li>
+              <strong>Nenhuma instrução registrada</strong>
+            </li>
+          )}
         </List>
       </Content>
     </Container>

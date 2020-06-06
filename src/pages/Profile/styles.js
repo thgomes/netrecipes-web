@@ -35,13 +35,10 @@ export const RecipeList = styled.ul`
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 40px 20px;
+  gap: 40px 20px;
   list-style: none;
 
   li {
-    display: flex;
-    flex-direction: column;
-
     a {
       img {
         width: 100%;

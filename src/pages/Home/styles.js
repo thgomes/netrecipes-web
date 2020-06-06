@@ -6,10 +6,10 @@ export const Container = styled.div`
 `;
 
 export const Banner = styled.div`
-  color: #000505;
   margin-top: 40px;
-  background-color: ${(props) => props.theme.colors.secundary};
+  height: 360px;
   border-radius: 20px;
+  background-color: ${(props) => props.theme.colors.secundary};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,10 +21,12 @@ export const Banner = styled.div`
 
     h2 {
       font-size: 45px;
+      color: #000505;
     }
 
     p {
       font-size: 24px;
+      color: #000505;
     }
   }
 
@@ -43,18 +45,20 @@ export const RecipeList = styled.ul`
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 40px 20px;
+  gap: 40px 20px;
   list-style: none;
 
   li {
-    display: flex;
-    flex-direction: column;
-
     a {
-      img {
-        width: 100%;
-        border-radius: 10px;
+      div {
         background: ${(props) => props.theme.colors.secundary};
+        height: 184px;
+        border-radius: 10px;
+
+        img {
+          width: 100%;
+          border-radius: 10px;
+        }
       }
 
       strong {

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 1020px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,6 +12,7 @@ export const Container = styled.div`
 
   img {
     margin-top: 20px;
+    width: 100%;
     max-width: 600px;
     border-radius: 20px;
   }

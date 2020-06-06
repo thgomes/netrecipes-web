@@ -38,10 +38,13 @@ function Home() {
         {recipes.map((recipe) => (
           <li>
             <Link to={`/recipe/${recipe.id}`}>
-              <img
-                src="https://i.ndtvimg.com/i/2017-10/gourmet-620_620x350_71507112783.jpg"
-                alt={recipe.name}
-              />
+              <div>
+                <img
+                  src="https://i.ndtvimg.com/i/2017-10/gourmet-620_620x350_71507112783.jpg"
+                  alt={recipe.name}
+                />
+              </div>
+
               <strong>{recipe.name}</strong>
             </Link>
           </li>

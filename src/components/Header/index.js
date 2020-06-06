@@ -29,7 +29,7 @@ function Header() {
               <Link to="/profile">Meu perfil</Link>
             </div>
             <img
-              src="https://api.adorable.io/avatars/285/abott@adorable.png"
+              src="https://api.adorable.io/avatars/285/eg.png"
               alt="Thiago Gomes"
             />
           </Profile>

@@ -21,7 +21,7 @@ function Profile() {
     <Container>
       <User>
         <img
-          src="https://api.adorable.io/avatars/285/abott@adorable.png"
+          src="https://api.adorable.io/avatars/285/eg.png"
           alt="Thiago Gomes"
         />
         <h1>Thiago Gomes</h1>

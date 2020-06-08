@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight, FaUtensils } from 'react-icons/fa';
 
 import api from '../../services/api';
 
@@ -7,16 +8,35 @@ import { Container, User, RecipeList } from './styles';
 
 function Profile() {
   const [recipes, setRecipes] = useState([]);
+  const [page, setPage] = useState(1);
+  const [pagesQuantity, setPagesQuantity] = useState(1);
 
   useEffect(() => {
     async function loadNotifications() {
-      const response = await api.get('recipes');
+      const response = await api.get('recipes', {
+        params: { page },
+      });
 
-      setRecipes(response.data);
+      setRecipes(response.data.rows);
+
+      setPagesQuantity(response.data.count / 6);
     }
 
     loadNotifications();
-  }, []);
+  }, [page]);
+
+  function handlePrevPage() {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  }
+
+  function handleNextPage() {
+    if (page < pagesQuantity) {
+      setPage(page + 1);
+    }
+  }
+
   return (
     <Container>
       <User>
@@ -27,7 +47,13 @@ function Profile() {
         <h1>Thiago Gomes</h1>
         <Link to="/account">Editar perfil</Link>
       </User>
-      <h2>Minhas Receitas</h2>
+      <nav>
+        <h2>Minhas Receitas</h2>
+        <button type="button">
+          <FaUtensils />
+          <strong>Nova Receita</strong>
+        </button>
+      </nav>
       <RecipeList>
         {recipes.map((recipe) => (
           <li>
@@ -41,6 +67,16 @@ function Profile() {
           </li>
         ))}
       </RecipeList>
+      <div>
+        <button type="button" onClick={handlePrevPage}>
+          <FaChevronLeft />
+          <strong>Anterior</strong>
+        </button>
+        <button type="button" onClick={handleNextPage}>
+          <strong>Próximo</strong>
+          <FaChevronRight />
+        </button>
+      </div>
     </Container>
   );
 }

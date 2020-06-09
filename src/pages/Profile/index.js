@@ -49,10 +49,13 @@ function Profile() {
       </User>
       <nav>
         <h2>Minhas Receitas</h2>
-        <button type="button">
-          <FaUtensils />
-          <strong>Nova Receita</strong>
-        </button>
+
+        <Link to="/new">
+          <button type="button">
+            <FaUtensils />
+            <strong>Nova Receita</strong>
+          </button>
+        </Link>
       </nav>
       <RecipeList>
         {recipes.map((recipe) => (

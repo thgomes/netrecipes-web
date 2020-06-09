@@ -35,7 +35,7 @@ function Home() {
         <h2>Novas Receitas</h2>
       </SubTitle>
       <RecipeList>
-        {recipes.map((recipe) => (
+        {/* {recipes.map((recipe) => (
           <li>
             <Link to={`/recipe/${recipe.id}`}>
               <div>
@@ -48,7 +48,7 @@ function Home() {
               <strong>{recipe.name}</strong>
             </Link>
           </li>
-        ))}
+        ))} */}
       </RecipeList>
     </Container>
   );

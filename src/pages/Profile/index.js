@@ -59,7 +59,7 @@ function Profile() {
       </nav>
       <RecipeList>
         {recipes.map((recipe) => (
-          <li>
+          <li key={recipe.id}>
             <Link to={`/recipe/${recipe.id}`}>
               <img
                 src="https://gooutside-static-cdn.akamaized.net/wp-content/uploads/sites/3/2020/02/comida-porcaria-efeito-no-cerebro-1280x720.jpg"

@@ -6,7 +6,7 @@ import api from '../../services/api';
 
 import { Container } from './styles';
 
-export default function Dropzone() {
+export default function Dropzone({ onFileUploaded }) {
   const [selectedFileUrl, setSelectedFileUrl] = useState('');
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -24,6 +24,8 @@ export default function Dropzone() {
       const config = { headers: { 'Content-Type': 'multipart/form-data' } };
 
       const response = await api.post('files', data, config);
+
+      onFileUploaded(response.data.id);
     }
 
     uploadImage();
@@ -37,7 +39,7 @@ export default function Dropzone() {
         <img src={selectedFileUrl} alt="Recipe Thumbnail" />
       ) : (
         <p>
-          <FaUpload />
+          <FaUpload size={20} />
           Imagem da sua receita
         </p>
       )}

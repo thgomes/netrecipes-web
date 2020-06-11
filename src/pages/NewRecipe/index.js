@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import { Form, Input, Textarea } from '@rocketseat/unform';
+import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import { FaUtensils } from 'react-icons/fa';
 
@@ -16,10 +17,20 @@ const schema = Yup.object().shape({
 function NewRecipe() {
   const [imageId, setImageId] = useState(null);
 
+  const history = useHistory();
+
   async function handleSubmit({ name, description }) {
-    await api.post('recipes', { name, description, image_id: imageId });
+    const response = await api.post('recipes', {
+      name,
+      description,
+      image_id: imageId,
+    });
 
     alert('Receita criada!');
+
+    const { id } = response.data;
+
+    history.push(`/recipe/${id}`);
   }
 
   return (

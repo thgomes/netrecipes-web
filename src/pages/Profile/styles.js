@@ -35,7 +35,7 @@ export const Container = styled.div`
   }
 
   div {
-    margin: 24px 0 24px;
+    margin: 40px 0 24px;
     display: flex;
     justify-content: center;
 
@@ -85,15 +85,21 @@ export const RecipeList = styled.ul`
   margin-top: 24px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px 20px;
+  gap: 8px 20px;
   list-style: none;
 
   li {
     a {
-      img {
-        width: 100%;
-        border-radius: 10px;
+      div {
         background: ${(props) => props.theme.colors.secundary};
+        height: 184px;
+        border-radius: 10px;
+
+        img {
+          width: 100%;
+          border-radius: 10px;
+          background: ${(props) => props.theme.colors.secundary};
+        }
       }
 
       strong {

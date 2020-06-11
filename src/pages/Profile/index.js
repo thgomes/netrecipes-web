@@ -61,10 +61,13 @@ function Profile() {
         {recipes.map((recipe) => (
           <li key={recipe.id}>
             <Link to={`/recipe/${recipe.id}`}>
-              <img
-                src="https://gooutside-static-cdn.akamaized.net/wp-content/uploads/sites/3/2020/02/comida-porcaria-efeito-no-cerebro-1280x720.jpg"
-                alt={recipe.name}
-              />
+              <div>
+                {recipe.image ? (
+                  <img src={recipe.image.url} alt={recipe.name} />
+                ) : (
+                  <p>Sem imagem</p>
+                )}
+              </div>
               <strong>{recipe.name}</strong>
             </Link>
           </li>

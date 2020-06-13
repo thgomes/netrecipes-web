@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Textarea } from '@rocketseat/unform';
 import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';

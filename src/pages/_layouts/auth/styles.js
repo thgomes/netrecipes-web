@@ -3,8 +3,6 @@ import { darken } from 'polished';
 
 export const Wrapper = styled.div`
   height: 100%;
-  background-color: ${(props) => props.theme.colors.background};
-  transition: background-color 2s;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -10,6 +10,7 @@ import Recipe from '../pages/Recipe';
 import Profile from '../pages/Profile';
 import Account from '../pages/Account';
 import NewRecipe from '../pages/NewRecipe';
+import EditRecipe from '../pages/EditRecipe';
 
 export default function Routes() {
   return (
@@ -18,10 +19,11 @@ export default function Routes() {
       <Route path="/register" component={SignUp} />
 
       <Route path="/home" component={Home} isPrivate />
-      <Route path="/recipe/:id" component={Recipe} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
       <Route path="/account" component={Account} isPrivate />
+      <Route path="/recipe/:id" component={Recipe} isPrivate />
       <Route path="/new" component={NewRecipe} isPrivate />
+      <Route path="/edit/:id" component={EditRecipe} isPrivate />
     </Switch>
   );
 }

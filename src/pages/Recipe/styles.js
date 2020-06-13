@@ -1,15 +1,43 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const Title = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 
   h1 {
     margin-top: 20px;
     color: ${(props) => props.theme.colors.strongtext};
   }
 
+  button {
+    display: flex;
+    align-items: center;
+    background-color: #7159ff;
+    color: #fff;
+    border-radius: 4px;
+    padding: 8px;
+    border: none;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: ${darken(0.05, '#7159ff')};
+    }
+
+    svg {
+      margin-right: 8px;
+    }
+  }
+`;
+
+export const Content = styled.div`
   img {
     margin-top: 20px;
     width: 100%;
@@ -28,8 +56,6 @@ export const Container = styled.div`
     margin-top: 20px;
   }
 `;
-
-export const Content = styled.div``;
 
 export const List = styled.div`
   font-size: 16px;

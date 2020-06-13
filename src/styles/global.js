@@ -20,11 +20,14 @@ html, body, #root {
 }
 
 body {
+  background-color: ${(props) => props.theme.colors.background};
+  transition: background-color 2s;
   color: ${(props) => props.theme.colors.text};
   -webkit-font-smoothing: antialiased;
+  margin: 10px;
 }
 
-body, input, button {
+body, input, button, textarea {
   font: 14px 'Roboto', sans-serif;
 }
 

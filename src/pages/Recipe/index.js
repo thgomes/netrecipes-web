@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { FaEdit } from 'react-icons/fa';
 
 import api from '../../services/api';
 
-import { Container, Content, List } from './styles';
+import { Container, Content, List, Title } from './styles';
 
 function Recipe({ match }) {
   const [recipe, setRecipe] = useState({
@@ -27,7 +29,15 @@ function Recipe({ match }) {
   return (
     <Container>
       <Content>
-        <h1>{recipe.recipe.name}</h1>
+        <Title>
+          <h1>{recipe.recipe.name}</h1>
+          <Link to={`/edit/${recipe.recipe.id}`}>
+            <button type="button">
+              <FaEdit />
+              <strong>Editar Receita</strong>
+            </button>
+          </Link>
+        </Title>
         <img src={recipe.image.url} alt="Recipe" />
         <p>{recipe.recipe.description}</p>
         <h2>Ingredientes</h2>

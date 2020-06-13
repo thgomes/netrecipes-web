@@ -9,8 +9,6 @@ import Dropzone from '../../components/Dropzone';
 import { Container, List, Buttons } from './styles';
 
 function EditRecipe({ match }) {
-  const [imageId, setImageId] = useState(null);
-
   const [recipe, setRecipe] = useState({
     recipe: {},
     image: {},
@@ -18,32 +16,102 @@ function EditRecipe({ match }) {
     steps: [],
   });
 
+  const [imageId, setImageId] = useState(null);
+
+  const [newIgredient, setNewIngredient] = useState({
+    name: '',
+    quantity: '',
+  });
+
+  const [newStep, setNewStep] = useState({
+    instruction: '',
+    order: '',
+  });
+
+  async function loadRecipe() {
+    const { id } = match.params;
+
+    const response = await api.get(`recipes/${id}`);
+
+    setRecipe(response.data);
+  }
+
   useEffect(() => {
-    async function loadRecipe() {
-      const { id } = match.params;
-
-      const response = await api.get(`recipes/${id}`);
-
-      setRecipe(response.data);
-    }
-
     loadRecipe();
   }, []);
+
+  function handleIngredientInputChange(event) {
+    const { name, value } = event.target;
+
+    setNewIngredient({ ...newIgredient, [name]: value });
+  }
+
+  function handleStepInputChange(event) {
+    const { name, value } = event.target;
+
+    setNewStep({ ...newStep, [name]: value });
+  }
+
+  async function handleCreateIngredient() {
+    await api.post('ingredients', {
+      recipe_id: recipe.recipe.id,
+      name: newIgredient.name,
+      quantity: newIgredient.quantity,
+    });
+
+    setNewIngredient({
+      quantity: '',
+      name: '',
+    });
+
+    loadRecipe();
+  }
+
+  async function handleCreateStep() {
+    await api.post('steps', {
+      recipe_id: recipe.recipe.id,
+      instruction: newStep.instruction,
+      order: newStep.order,
+    });
+
+    setNewStep({
+      order: '',
+      instruction: '',
+    });
+
+    loadRecipe();
+  }
+
+  async function handleDeleteIngredient(ingredientId) {
+    await api.delete(`ingredients/${ingredientId}`);
+
+    loadRecipe();
+  }
+
+  async function handleDeleteStep(stepId) {
+    await api.delete(`steps/${stepId}`);
+
+    loadRecipe();
+  }
 
   const history = useHistory();
 
   async function handleSubmit({ name, description }) {
-    const response = await api.post('recipes', {
+    const request = {
+      id: recipe.recipe.id,
       name,
       description,
-      image_id: imageId,
-    });
+    };
 
-    alert('Receita criada!');
+    if (imageId) {
+      request.image_id = imageId;
+    }
 
-    const { id } = response.data;
+    await api.put('recipes', request);
 
-    history.push(`/recipe/${id}`);
+    alert('Informações da receita alteradas!');
+
+    history.push(`/profile`);
   }
 
   return (
@@ -67,12 +135,17 @@ function EditRecipe({ match }) {
         <List>
           {recipe.ingredients[0] ? (
             recipe.ingredients.map((ingredient) => (
-              <li>
+              <li key={ingredient.id}>
                 <div>
                   <strong>{ingredient.quantity}</strong>
                   <strong>{ingredient.name}</strong>
                 </div>
-                <FaTrashAlt />
+                <button
+                  onClick={() => handleDeleteIngredient(ingredient.id)}
+                  type="button"
+                >
+                  <FaTrashAlt size={18} />
+                </button>
               </li>
             ))
           ) : (
@@ -81,14 +154,25 @@ function EditRecipe({ match }) {
             </li>
           )}
           <li>
-            <Input
-              className
+            <input
+              onChange={handleIngredientInputChange}
               type="text"
               name="quantity"
+              value={newIgredient.quantity}
               placeholder="quantidade"
+              autoComplete="off"
             />
-            <Input type="text" name="ingredient" placeholder="ingrediente" />
-            <FaPlus size={24} />
+            <input
+              onChange={handleIngredientInputChange}
+              type="text"
+              name="name"
+              value={newIgredient.name}
+              placeholder="ingrediente"
+              autoComplete="off"
+            />
+            <button type="button" onClick={handleCreateIngredient}>
+              <FaPlus size={18} />
+            </button>
           </li>
         </List>
 
@@ -96,12 +180,14 @@ function EditRecipe({ match }) {
         <List>
           {recipe.steps[0] ? (
             recipe.steps.map((step) => (
-              <li>
+              <li key={step.id}>
                 <div>
                   <strong>{step.order}º</strong>
                   <strong>{step.instruction}</strong>
                 </div>
-                <FaTrashAlt />
+                <button onClick={() => handleDeleteStep(step.id)} type="button">
+                  <FaTrashAlt size={18} />
+                </button>
               </li>
             ))
           ) : (
@@ -110,9 +196,25 @@ function EditRecipe({ match }) {
             </li>
           )}
           <li>
-            <Input className type="text" name="order" />
-            <Input type="text" name="step" placeholder="instrução" />
-            <FaPlus size={24} />
+            <input
+              onChange={handleStepInputChange}
+              type="text"
+              name="order"
+              value={newStep.order}
+              placeholder="ordem"
+              autoComplete="off"
+            />
+            <input
+              onChange={handleStepInputChange}
+              type="text"
+              name="instruction"
+              value={newStep.instruction}
+              placeholder="instrução"
+              autoComplete="off"
+            />
+            <button onClick={handleCreateStep} type="button">
+              <FaPlus size={18} />
+            </button>
           </li>
         </List>
 

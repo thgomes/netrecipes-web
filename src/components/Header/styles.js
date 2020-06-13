@@ -53,6 +53,11 @@ export const Profile = styled.div`
       margin-top: 2px;
       font-size: 12px;
       color: ${(props) => props.theme.colors.text};
+      transition: 0.2s;
+
+      &:hover {
+        color: #7159ff;
+      }
     }
   }
 

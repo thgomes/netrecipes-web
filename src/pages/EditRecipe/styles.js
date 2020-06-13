@@ -61,13 +61,17 @@ export const List = styled.div`
       border-radius: 4px;
     }
 
-    svg {
+    div + button {
+      border: none;
+      background: none;
       margin-left: 16px;
-      margin-right: 2px;
-      cursor: pointer;
 
-      &:hover {
-        color: #fb6f91;
+      svg {
+        color: ${(props) => props.theme.colors.text};
+
+        &:hover {
+          color: #fb6f91;
+        }
       }
     }
 
@@ -97,9 +101,17 @@ export const List = styled.div`
       }
     }
 
-    input + svg {
-      &:hover {
-        color: #7159ff;
+    input + button {
+      border: none;
+      background: none;
+      margin-left: 16px;
+
+      svg {
+        color: ${(props) => props.theme.colors.text};
+
+        &:hover {
+          color: #7159ff;
+        }
       }
     }
   }

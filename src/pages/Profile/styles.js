@@ -78,6 +78,11 @@ export const User = styled.div`
   a {
     margin: 5px;
     color: ${(props) => props.theme.colors.text};
+    transition: 0.2s;
+
+    &:hover {
+      color: #7159ff;
+    }
   }
 `;
 

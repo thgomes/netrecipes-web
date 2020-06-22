@@ -62,10 +62,8 @@ function Profile() {
           <li key={recipe.id}>
             <Link to={`/recipe/${recipe.id}`}>
               <div>
-                {recipe.image ? (
+                {recipe.image && (
                   <img src={recipe.image.url} alt={recipe.name} />
-                ) : (
-                  <p>Sem imagem</p>
                 )}
               </div>
               <strong>{recipe.name}</strong>

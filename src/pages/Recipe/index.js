@@ -4,7 +4,7 @@ import { FaEdit } from 'react-icons/fa';
 
 import api from '../../services/api';
 
-import { Container, Content, List, Title } from './styles';
+import { Container, Content, List, Title, Image } from './styles';
 
 function Recipe({ match }) {
   const [recipe, setRecipe] = useState({
@@ -38,7 +38,15 @@ function Recipe({ match }) {
             </button>
           </Link>
         </Title>
-        <img src={recipe.image.url} alt="Recipe" />
+        <Image>
+          {recipe.image ? (
+            <img src={recipe.image.url} alt="Recipe" />
+          ) : (
+            <div>
+              <strong>Sem Imagem</strong>
+            </div>
+          )}
+        </Image>
         <p>{recipe.recipe.description}</p>
         <h2>Ingredientes</h2>
         <List>

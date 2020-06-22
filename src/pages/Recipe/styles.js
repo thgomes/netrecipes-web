@@ -32,18 +32,14 @@ export const Title = styled.div`
     }
 
     svg {
-      margin-right: 8px;
+      margin-right: 4px;
     }
   }
 `;
 
 export const Content = styled.div`
-  img {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 600px;
-    border-radius: 20px;
-  }
+  max-width: 600px;
+  width: 100%;
 
   p {
     margin-top: 10px;
@@ -73,6 +69,29 @@ export const List = styled.div`
 
     strong {
       margin: 0 20px;
+    }
+  }
+`;
+
+export const Image = styled.div`
+  margin-top: 20px;
+
+  img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px;
+  }
+
+  div {
+    background-color: ${(props) => props.theme.colors.secundary};
+    height: 360px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    strong {
+      color: #fff;
     }
   }
 `;

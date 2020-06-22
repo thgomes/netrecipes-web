@@ -120,7 +120,7 @@ export const List = styled.div`
 export const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 24px;
+  margin: 24px 0 24px;
 
   button {
     width: 40%;

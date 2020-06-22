@@ -10,6 +10,7 @@ import { Container, Content, Profile } from './styles';
 
 function Header() {
   const theme = useSelector((state) => state.theme.theme);
+  const profile = useSelector((state) => state.user.profile);
 
   const dispatch = useDispatch();
 
@@ -25,12 +26,15 @@ function Header() {
         <aside>
           <Profile>
             <div>
-              <strong>Thiago Gomes</strong>
+              <strong>{profile.name}</strong>
               <Link to="/profile">Meu perfil</Link>
             </div>
             <img
-              src="https://api.adorable.io/avatars/285/eg.png"
-              alt="Thiago Gomes"
+              src={
+                profile.avatar.url ||
+                'https://api.adorable.io/avatars/285/eg.png'
+              }
+              alt={profile.name}
             />
           </Profile>
 

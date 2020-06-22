@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { FaChevronLeft, FaChevronRight, FaUtensils } from 'react-icons/fa';
 
 import api from '../../services/api';
@@ -10,6 +11,8 @@ function Profile() {
   const [recipes, setRecipes] = useState([]);
   const [page, setPage] = useState(1);
   const [pagesQuantity, setPagesQuantity] = useState(1);
+
+  const profile = useSelector((state) => state.user.profile);
 
   useEffect(() => {
     async function loadNotifications() {
@@ -41,10 +44,12 @@ function Profile() {
     <Container>
       <User>
         <img
-          src="https://api.adorable.io/avatars/285/eg.png"
-          alt="Thiago Gomes"
+          src={
+            profile.avatar.url || 'https://api.adorable.io/avatars/285/eg.png'
+          }
+          alt={profile.name}
         />
-        <h1>Thiago Gomes</h1>
+        <h1>{profile.name}</h1>
         <Link to="/account">Editar perfil</Link>
       </User>
       <nav>

@@ -3,12 +3,11 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
   max-width: 600px;
-  margin: 50px auto;
+  margin: 40px auto;
 
   form {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
     input {
       color: ${(props) => props.theme.colors.text};
       background: ${(props) => props.theme.colors.primary};

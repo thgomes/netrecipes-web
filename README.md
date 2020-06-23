@@ -36,7 +36,7 @@ _ps: Se precisar de ajuda para fazer um clone, esse [tutorial aqui](https://help
 
 A interface precisa interagir com o servidor para receber e enviar informações referentes as receitas e sua conta.
 
-Vá até o repositório [Net Recipes API](https://github.com/LauraBeatris/gympoint-api) e siga as intruções em ordem para rodar o servidor na sua máquina.
+Vá até o repositório [Net Recipes API](https://github.com/thgomes/netrecipes-api) e siga as intruções em ordem para rodar o servidor na sua máquina.
 
 ## 🤔 Como contribuir
 

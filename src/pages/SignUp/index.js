@@ -34,7 +34,7 @@ function SignUp() {
         <Input name="email" type="email" placeholder="Seu e-mail" />
         <Input name="password" type="password" placeholder="Sua senha" />
 
-        <button type="submit">Acessar</button>
+        <button type="submit">Criar conta</button>
         <Link to="/">Já tenho login</Link>
       </Form>
     </>

@@ -10,8 +10,12 @@ import Dropzone from '../../components/Dropzone';
 import { Container } from './styles';
 
 const schema = Yup.object().shape({
-  name: Yup.string().required('O nome da receita é obrigatório.'),
-  description: Yup.string().required('A descriçao da receita é obrigatória.'),
+  name: Yup.string()
+    .max(100, 'O nome deve ter no máximo 100 caracteres')
+    .required('O nome da receita é obrigatório.'),
+  description: Yup.string()
+    .max(250, 'A descrição deve ter no máximo 250 caracteres')
+    .required('A descriçao da receita é obrigatória.'),
 });
 
 function NewRecipe() {

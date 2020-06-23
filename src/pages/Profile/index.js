@@ -45,7 +45,9 @@ function Profile() {
       <User>
         <img
           src={
-            profile.avatar.url || 'https://api.adorable.io/avatars/285/eg.png'
+            profile.avatar
+              ? profile.avatar.url
+              : 'https://api.adorable.io/avatars/285/eg.png'
           }
           alt={profile.name}
         />

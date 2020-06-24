@@ -20,27 +20,27 @@ export const Container = styled.div`
       font-size: 16px;
       margin-top: 24px;
       color: ${(props) => props.theme.colors.strongtext};
+    }
 
-      input,
-      textarea {
-        width: 100%;
-        color: ${(props) => props.theme.colors.text};
-        background: ${(props) => props.theme.colors.primary};
-        border: 0;
-        border-radius: 4px;
-        min-height: 44px;
-        height: auto;
-        padding: 0 15px;
-        resize: vertical;
+    input,
+    textarea {
+      width: 100%;
+      color: ${(props) => props.theme.colors.text};
+      background: ${(props) => props.theme.colors.primary};
+      border: 0;
+      border-radius: 4px;
+      min-height: 44px;
+      height: auto;
+      padding: 0 15px;
+      resize: vertical;
 
-        &::placeholder {
-          color: #666;
-        }
+      &::placeholder {
+        color: #666;
       }
+    }
 
-      textarea {
-        padding-top: 12px;
-      }
+    textarea {
+      padding-top: 12px;
     }
   }
 `;

@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import PropTypes from 'prop-types';
 import { FaUpload } from 'react-icons/fa';
 
 import api from '../../services/api';
@@ -30,7 +31,7 @@ export default function Dropzone({ onFileUploaded }) {
 
     uploadImage();
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
     <Container {...getRootProps()}>
@@ -46,3 +47,7 @@ export default function Dropzone({ onFileUploaded }) {
     </Container>
   );
 }
+
+Dropzone.propTypes = {
+  onFileUploaded: PropTypes.func.isRequired,
+};

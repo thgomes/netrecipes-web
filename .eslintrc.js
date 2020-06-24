@@ -32,5 +32,13 @@ module.exports = {
       { extensions: ['.jsx', '.js'] }
     ],
     'import/prefer-default-export': 'off',
+    "no-console": "off",
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "labelAttributes": ["label"],
+      "controlComponents": ["Dropzone"],
+    }],
+    "react/jsx-props-no-spreading": "off",
+    "no-param-reassign": "off",
+    "camelcase": "off"
   },
 };

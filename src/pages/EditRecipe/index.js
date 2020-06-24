@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Textarea } from '@rocketseat/unform';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { FaEdit, FaTrashAlt, FaPlus } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 import api from '../../services/api';
 import Dropzone from '../../components/Dropzone';
@@ -109,7 +111,7 @@ function EditRecipe({ match }) {
 
     await api.put('recipes', request);
 
-    alert('Informações da receita alteradas!');
+    toast.success('Imformações da receita alteradas!');
 
     history.push(`/profile`);
   }
@@ -118,105 +120,106 @@ function EditRecipe({ match }) {
     <Container>
       <h1>Edite sua receita</h1>
       <Form initialData={recipe.recipe} onSubmit={handleSubmit}>
-        <label htmlFor="name">
-          Nome da receita <br />
-          <Input type="text" name="name" />
-        </label>
-        <label htmlFor="description">
-          Fale sobre sua receita <br />
-          <Textarea name="description" />
-        </label>
-        <label htmlFor="RecipeImage">
+        <Input type="text" name="name" label="Nome da receita" />
+        <Textarea name="description" label="Fale sobre sua receita" />
+        <label>
           Coloque uma imagem
-          <Dropzone onFileUploaded={setImageId} />
+          <Dropzone id="drop" onFileUploaded={setImageId} />
         </label>
 
-        <label htmlFor="RecipeIngredients">Ingredientes</label>
-        <List>
-          {recipe.ingredients[0] ? (
-            recipe.ingredients.map((ingredient) => (
-              <li key={ingredient.id}>
-                <div>
-                  <strong>{ingredient.quantity}</strong>
-                  <strong>{ingredient.name}</strong>
-                </div>
-                <button
-                  onClick={() => handleDeleteIngredient(ingredient.id)}
-                  type="button"
-                >
-                  <FaTrashAlt size={18} />
-                </button>
+        <label>
+          Ingredientes
+          <List>
+            {recipe.ingredients[0] ? (
+              recipe.ingredients.map((ingredient) => (
+                <li key={ingredient.id}>
+                  <div>
+                    <strong>{ingredient.quantity}</strong>
+                    <strong>{ingredient.name}</strong>
+                  </div>
+                  <button
+                    onClick={() => handleDeleteIngredient(ingredient.id)}
+                    type="button"
+                  >
+                    <FaTrashAlt size={18} />
+                  </button>
+                </li>
+              ))
+            ) : (
+              <li>
+                <strong>Nenhum ingrediente registrado</strong>
               </li>
-            ))
-          ) : (
+            )}
             <li>
-              <strong>Nenhum ingrediente registrado</strong>
+              <input
+                onChange={handleIngredientInputChange}
+                type="text"
+                name="quantity"
+                value={newIgredient.quantity}
+                placeholder="quantidade"
+                autoComplete="off"
+              />
+              <input
+                onChange={handleIngredientInputChange}
+                type="text"
+                name="name"
+                value={newIgredient.name}
+                placeholder="ingrediente"
+                autoComplete="off"
+              />
+              <button type="button" onClick={handleCreateIngredient}>
+                <FaPlus size={18} />
+              </button>
             </li>
-          )}
-          <li>
-            <input
-              onChange={handleIngredientInputChange}
-              type="text"
-              name="quantity"
-              value={newIgredient.quantity}
-              placeholder="quantidade"
-              autoComplete="off"
-            />
-            <input
-              onChange={handleIngredientInputChange}
-              type="text"
-              name="name"
-              value={newIgredient.name}
-              placeholder="ingrediente"
-              autoComplete="off"
-            />
-            <button type="button" onClick={handleCreateIngredient}>
-              <FaPlus size={18} />
-            </button>
-          </li>
-        </List>
+          </List>
+        </label>
 
-        <label htmlFor="RecipeSteps">Passo a passo</label>
-        <List>
-          {recipe.steps[0] ? (
-            recipe.steps.map((step) => (
-              <li key={step.id}>
-                <div>
-                  <strong>{step.order}º</strong>
-                  <strong>{step.instruction}</strong>
-                </div>
-                <button onClick={() => handleDeleteStep(step.id)} type="button">
-                  <FaTrashAlt size={18} />
-                </button>
+        <label>
+          Passo a passo
+          <List>
+            {recipe.steps[0] ? (
+              recipe.steps.map((step) => (
+                <li key={step.id}>
+                  <div>
+                    <strong>{step.order}º</strong>
+                    <strong>{step.instruction}</strong>
+                  </div>
+                  <button
+                    onClick={() => handleDeleteStep(step.id)}
+                    type="button"
+                  >
+                    <FaTrashAlt size={18} />
+                  </button>
+                </li>
+              ))
+            ) : (
+              <li>
+                <strong>Nenhuma instrução registrada</strong>
               </li>
-            ))
-          ) : (
+            )}
             <li>
-              <strong>Nenhuma instrução registrada</strong>
+              <input
+                onChange={handleStepInputChange}
+                type="text"
+                name="order"
+                value={newStep.order}
+                placeholder="ordem"
+                autoComplete="off"
+              />
+              <input
+                onChange={handleStepInputChange}
+                type="text"
+                name="instruction"
+                value={newStep.instruction}
+                placeholder="instrução"
+                autoComplete="off"
+              />
+              <button onClick={handleCreateStep} type="button">
+                <FaPlus size={18} />
+              </button>
             </li>
-          )}
-          <li>
-            <input
-              onChange={handleStepInputChange}
-              type="text"
-              name="order"
-              value={newStep.order}
-              placeholder="ordem"
-              autoComplete="off"
-            />
-            <input
-              onChange={handleStepInputChange}
-              type="text"
-              name="instruction"
-              value={newStep.instruction}
-              placeholder="instrução"
-              autoComplete="off"
-            />
-            <button onClick={handleCreateStep} type="button">
-              <FaPlus size={18} />
-            </button>
-          </li>
-        </List>
+          </List>
+        </label>
 
         <Buttons>
           <button className="DeleteButton" type="button">
@@ -234,3 +237,11 @@ function EditRecipe({ match }) {
 }
 
 export default EditRecipe;
+
+EditRecipe.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+};

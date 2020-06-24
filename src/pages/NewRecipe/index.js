@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Input, Textarea } from '@rocketseat/unform';
 import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 import { FaUtensils } from 'react-icons/fa';
 
 import api from '../../services/api';
@@ -30,7 +31,7 @@ function NewRecipe() {
       image_id: imageId,
     });
 
-    alert('Receita criada!');
+    toast.success('Receita criada!');
 
     const { id } = response.data;
 

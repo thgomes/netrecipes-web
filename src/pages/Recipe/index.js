@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { FaEdit } from 'react-icons/fa';
 
 import api from '../../services/api';
@@ -84,3 +85,11 @@ function Recipe({ match }) {
 }
 
 export default Recipe;
+
+Recipe.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+};

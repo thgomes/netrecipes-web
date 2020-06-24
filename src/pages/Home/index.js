@@ -1,25 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
-import api from '../../services/api';
+import React from 'react';
 
 import chef from '../../assets/chef.png';
 
-import { SubTitle, Banner, RecipeList, Container } from './styles';
+import { SubTitle, Banner, Container } from './styles';
 
 function Home() {
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    async function loadNotifications() {
-      const response = await api.get('recipes');
-
-      setRecipes(response.data);
-    }
-
-    loadNotifications();
-  }, []);
-
   return (
     <Container>
       <Banner>
@@ -34,22 +19,6 @@ function Home() {
       <SubTitle>
         <h2>Novas Receitas</h2>
       </SubTitle>
-      <RecipeList>
-        {/* {recipes.map((recipe) => (
-          <li>
-            <Link to={`/recipe/${recipe.id}`}>
-              <div>
-                <img
-                  src="https://i.ndtvimg.com/i/2017-10/gourmet-620_620x350_71507112783.jpg"
-                  alt={recipe.name}
-                />
-              </div>
-
-              <strong>{recipe.name}</strong>
-            </Link>
-          </li>
-        ))} */}
-      </RecipeList>
     </Container>
   );
 }

@@ -20,7 +20,7 @@
   <a href="#-licença">Licença</a>
 </p>
 
-## 🚀 Instalação e execução
+## Instalação e execução
 
 _ps: Se precisar de ajuda para fazer um clone, esse [tutorial aqui](https://help.github.com/pt/github/creating-cloning-and-archiving-repositories/cloning-a-repository) vai te ajudar 
 
@@ -38,7 +38,7 @@ A interface precisa interagir com o servidor para receber e enviar informações
 
 Vá até o repositório [Net Recipes API](https://github.com/thgomes/netrecipes-api) e siga as intruções em ordem para rodar o servidor na sua máquina.
 
-## 🤔 Como contribuir
+## Como contribuir
 
 Se quiser contribuir para esse repositório aqui, seja corrigindo algum problema, adicionando comentários ou melhorando a documentação, você pode seguir esse tutorial abaixo:
 
@@ -52,7 +52,7 @@ Se quiser contribuir para esse repositório aqui, seja corrigindo algum problema
 
 Depois que o *merge* da sua *pull request* for feito, você pode deletar a sua *branch*.
 
-## 📕 Licença
+## Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 

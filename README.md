@@ -22,7 +22,7 @@
 
 ## 🚀 Instalação e execução
 
-_ps: Se precisar de ajuda para fazer um clone, esse [tutorial aqui](https://help.github.com/pt/github/creating-cloning-and-archiving-repositories/cloning-a-repository) vai te ajudar 💖_
+_ps: Se precisar de ajuda para fazer um clone, esse [tutorial aqui](https://help.github.com/pt/github/creating-cloning-and-archiving-repositories/cloning-a-repository) vai te ajudar 
 
 **Primeiramente instale o [Node.js](https://nodejs.org/en/download/) e o [Yarn](https://yarnpkg.com/), em seguida, clone o projeto rodando este comando:**
 
